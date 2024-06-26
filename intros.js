@@ -17,3 +17,6 @@ const intros = {
     "a1a6358e-8141-4d19-9f9c-5e233f838b71": 7.1, // tiny4k.com
     "981887d6-da48-4dfc-88d1-7ed13a2754f2": 10.1, // wetvr.com
 }
+const networks = {
+    "2be8463b-0505-479e-a07d-5abc7a6edd54": 13.1, // naughtyamerica.com
+}
