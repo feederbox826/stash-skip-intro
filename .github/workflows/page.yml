@@ -4,6 +4,8 @@ name: Deploy static content to Pages
 on:
   push:
     branches: ["main"]
+    paths:
+      - "intros.js"
   workflow_dispatch:
 
 permissions:
