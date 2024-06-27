@@ -42,5 +42,6 @@ const intros = {
 const networks = {
     "2be8463b-0505-479e-a07d-5abc7a6edd54": 13.1, // naughtyamerica.com
     "525f8c32-d14f-42c0-939c-bb5d8eae8bcf": 7.1, // bangbros.com
+    "e653a89f-6794-4243-a748-2d808647d2d3": 6.1, // bang.com
     "eec95cdd-9f58-4fc7-b7d1-e98786453d27": 13, // brazzers.com
 }
