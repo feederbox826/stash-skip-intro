@@ -26,7 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - run: mkdir page && cp intros.js page
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'page'
       - uses: actions/deploy-pages@v4

@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"eslint-plugin-annotation": "^1.1.6"
+	},
+	"scripts": {
+		"lint": "pnpx eslint .",
+		"lint:fix": "xnpx eslint . --fix"
+	}
+}
