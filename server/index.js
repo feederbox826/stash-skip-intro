@@ -21,7 +21,8 @@ async function main() {
     })
 
     app.get("/all", async (req, res) => {
-        res.send({ studios, networks })
+        const intros = await db.getIntros()
+        res.send({ intros })
     })
     app.get("/:type", async (req, res) => {
         const idType = getType(req.params.type)
@@ -35,6 +36,12 @@ async function main() {
         const data = await db.getId(idType, id)
         if (!data) return res.status(404).send('not found')
         res.send(data)
+    })
+    app.post("/introless", async (req, res) => {
+        const { type, id, site, reason } = req.query
+        const idType = getType(type)
+        db.insertIntroless({ id, type: idType, site, reason })
+        res.send('inserted')
     })
     app.post("/insert", async (req, res) => {
         const { type, id, seconds, site } = req.query
@@ -58,8 +65,6 @@ async function main() {
 
     // setup db
     await db.setupDb()
-    const studios = await db.getIntroType(1)
-    const networks = await db.getIntroType(2)
     app.listen({ port: 3000 }, () => {
         console.log(`server listening on ${app.server.address().port}`)
     })

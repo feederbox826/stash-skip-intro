@@ -8,13 +8,15 @@ const type = {
 
 let db
 
-const getIntroType = async (type) => db.all(`SELECT id, seconds FROM intros WHERE type = ? ORDER BY id ASC`, type)
+const getIntros = async () => db.all(`SELECT id, seconds FROM intros ORDER BY id ASC`)
 
 const getId = async (type, id) => db.get(`SELECT id, seconds FROM intros WHERE id = ? AND type = ?`, id, type)
 
 const insertInto = async ({ id, type, seconds, site }) => db.run(`INSERT INTO intros (id, type, seconds, site) VALUES (?, ?, ?, ?)`, id, type, seconds, site)
 
 const updateInto = async ({ id, type, seconds, site }) => db.run(`UPDATE intros SET seconds = ?, site = ? WHERE id = ? AND type = ?`, seconds, site, id, type)
+
+const insertIntroless = async ({ id, type, site, reason }) => db.run(`INSERT INTO introless (id, type, site, reason) VALUES (?, ?, ?, ?)`, id, type, site, reason)
 
 async function setupDb() {
     db = await sqlite.open({
@@ -24,7 +26,7 @@ async function setupDb() {
     console.log("db opened")
     // create tables
     await db.run('CREATE TABLE IF NOT EXISTS intros (id TEXT UNIQUE NOT NULL, type INT, seconds REAL, site TEXT)')
-    await db.run('CREATE TABLE IF NOT EXISTS introless (id TEXT UNIQUE NOT NULL, type INT, site TEXT)')
+    await db.run('CREATE TABLE IF NOT EXISTS introless (id TEXT UNIQUE NOT NULL, type INT, site TEXT, reason TEXT)')
     // create indicies
     await db.run('CREATE UNIQUE INDEX IF NOT EXISTS introless_id ON introless (id)')
     await db.run('CREATE UNIQUE INDEX IF NOT EXISTS intros_id ON intros (id)')
@@ -32,9 +34,10 @@ async function setupDb() {
 }
 
 module.exports = {
-    getIntroType,
+    getIntros,
     getId,
     insertInto,
     updateInto,
+    insertIntroless,
     setupDb,
 }
