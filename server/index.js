@@ -24,16 +24,8 @@ async function main() {
         const intros = await db.getIntros()
         res.send({ intros })
     })
-    app.get("/:type", async (req, res) => {
-        const idType = getType(req.params.type)
-        if (!idType) return res.status(400).send('invalid type')
-        const data = await db.getIntroType(req.params.type)
-        res.send(data)
-    })
-    app.get("/:type/:id", async (req, res) => {
-        const idType = getType(req.params.type)
-        if (!idType) return res.status(400).send('invalid type')
-        const data = await db.getId(idType, id)
+    app.get("/id/:id", async (req, res) => {
+        const data = await db.getId(id)
         if (!data) return res.status(404).send('not found')
         res.send(data)
     })

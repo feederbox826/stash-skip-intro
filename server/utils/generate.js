@@ -10,6 +10,6 @@ axios({
     res.data.intros.forEach(studio => {
         intros[studio.id] = studio.seconds
     })
-    const fileContents = JSON.stringify(intros)
-    fs.writeFileSync(filepath, fileContents)
+    fs.writeFileSync(filepath, JSON.stringify(intros))
+    fs.writeFileSync("../intros-pretty.json", JSON.stringify(intros, null, 2))
 })
