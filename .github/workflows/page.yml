@@ -5,7 +5,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "intros.js"
+      - "intros.json"
   workflow_dispatch:
 
 permissions:
