@@ -18,6 +18,8 @@ const updateInto = async ({ id, type, seconds, site }) => db.run(`UPDATE intros 
 
 const insertIntroless = async ({ id, type, site, reason }) => db.run(`INSERT INTO introless (id, type, site, reason) VALUES (?, ?, ?, ?)`, id, type, site, reason)
 
+const getAllIntroless = async () => db.all(`SELECT id FROM introless ORDER BY id ASC`)
+
 const getIntroless = async (id) => db.get(`SELECT id, reason FROM introless WHERE id = ?`, id)
 
 async function setupDb() {
@@ -39,6 +41,7 @@ module.exports = {
     getIntros,
     getId,
     getIntroless,
+    getAllIntroless,
     insertInto,
     updateInto,
     insertIntroless,

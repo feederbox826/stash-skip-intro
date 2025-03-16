@@ -19,10 +19,10 @@ async function main() {
         origin: '*',
         methods: ['GET', 'POST']
     })
-
     app.get("/all", async (req, res) => {
+        const introless = await db.getAllIntroless()
         const intros = await db.getIntros()
-        res.send({ intros })
+        res.send({ intros, introless })
     })
     app.get("/id/:id", async (req, res) => {
         const data = await db.getId(id)

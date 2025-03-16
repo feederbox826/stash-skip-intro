@@ -1,7 +1,7 @@
-const queue = require("../queue.json")
+const queue = require("../../queue.json")
 const studios = queue.data.findStudios.studios
 const fs = require("fs")
-const db = require('./db')
+const db = require('../db')
 
 async function main() {
   await db.setupDb()
