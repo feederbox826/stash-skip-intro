@@ -1,3 +1,7 @@
+> [!WARNING]
+> Removed in favor of user-defined local times
+> https://github.com/feederbox826/plugins/commit/0781453f45e3f70939abab59243fdd6ff9ed9e5d
+
 # stash-skip intro database
 
 database for [skip-intro](https://github.com/feederbox826/plugins/tree/main/plugins/skip-intro) plugin
